@@ -1,14 +1,21 @@
 import express from 'express';
-import cors from 'cors';
+import { open } from 'lmdb';
 
 const app = express();
 const port = 3200;
 
-app.use(cors());
+const db = open({ path: './data' });
+const KEY = 'message';
+
+if (db.get(KEY) === undefined) {
+  db.put(KEY, 'hello world');
+}
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'hello-world' });
+  const text = db.get(KEY) as string;
+  res.send(text);
 });
 
 app.listen(port, () => {

@@ -1,12 +1,12 @@
 {
-  "name": "pelicans-backend",
+  "name": "birds",
   "type": "module",
   "scripts": {
     "dev": "ts-node src/index.ts"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "lmdb": "^3.5.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
